@@ -7,6 +7,9 @@ nav{
     opacity: 0.5;
     color:brown;
 }
+#navContent{
+    padding-right: 50px;
+}
 .container-fluid img{
     margin-left: 50px;
 }
