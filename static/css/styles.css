@@ -29,6 +29,19 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
+.hptext{
+    width: 100%;
+    height:100%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.texts{
+    background-color:azure;
+    padding: 5px 5px;
+}
 #classical{
     text-align: center;
     display: flex;
