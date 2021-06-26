@@ -9,20 +9,42 @@ function Addresses(street, city, county){
     this.cityName = city;
     this.countyName = county;
 }
-function Order(pizza, size, crust){
+Addresses.prototype.fullAddress = function (){
+    return this.streetName + ", " + this.cityName + ", " + this.countyName;
+}
+function Order(pizza, size, crust, totalAmount){
     this.pizza = pizza;
     this.size = size;
     this.crust = crust;
+    this.totalAmount = totalAmount;
     this.toppingsAdded = [];
 }
 Order.prototype.fullOrder = function(){
-    return this.pizza + ", " + this.size + ", " + this.crust
+    return "Flavor: " + this.pizza + ", size:  " + this.size + ", crust type: " + this.crust + ", toppings: " + this.toppingsAdded + " and it costs: " + this.totalAmount; 
+}
+
+function resetFields(){
+    document.getElementById("pizza1").checked = false;
+    document.getElementById("pizza2").checked = false;
+    document.getElementById("pizza3").checked = false;
+    document.getElementById("pizza4").checked = false;
+    document.getElementById("pizza5").checked = false;
+    document.getElementById("pizza6").checked = false;
+    document.getElementById("large").checked = false;
+    document.getElementById("medium").checked = false;
+    document.getElementById("small").checked = false;
+
+    document.getElementById("crispy").checked = false;
+    document.getElementById("stuffed").checked = false;
+    document.getElementById("glutten").checked = false;
+
+    document.getElementById("meat").checked = false;
+    document.getElementById("cheese").checked = false;
 }
 
 
-
 $(document).ready(function(){
-    $("#collect").submit(function(event){
+    $("form#collect").submit(function(event){
 
         event.preventDefault();
 
@@ -32,21 +54,9 @@ $(document).ready(function(){
         var cityNameInput = document.getElementById("city_name").value;
         var countyNameInput = document.getElementById("county_name").value;
 
-        var pizzaSelected = $("input[name='pizza']:checked").val();
-        var sizeSelected = $("input[name='size']:checked").val();
-        var crustSelected = $("input[name='crust']:checked").val();
-
-        var toppingsBought = [];
-        $("input:checkbox[name=toppings]:checked").each(function () {
-            toppingsBought.push($(this).val());
-        });
-
-        newOrder = new Order(pizzaSelected, sizeSelected, crustSelected);
         newAddress = new Addresses(streetNameInput, cityNameInput, countyNameInput);
         newContact = new Contact(firstNameInput, lastNameInput);
-        newOrder.toppingsAdded.push(toppingsBought);
         newContact.addressMain.push(newAddress);
-        newContact.orders.push(newOrder);
 
         console.log(newContact);
 
@@ -68,182 +78,132 @@ $(document).ready(function(){
         var meat = document.getElementById("meat");
         var cheese = document.getElementById("cheese");
 
-        var total = 0
+        var total = 0;
 
         //CLASSIC PIZZAS
         // Pizza 1, 2 and 3 large
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && crispy.checked == true){
-            total = 1000;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && stuffed.checked == true) {
-            total = 1200;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && glutten.checked == true) {
-            total = 1400;
-        }
-        // Pizza 1, 2 and 3 medium
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && crispy.checked == true) {
-            total = 800;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && stuffed.checked == true) {
-            total = 1000;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && glutten.checked == true) {
-            total = 1200;
-        }
-        // Pizza 1, 2 and 3 small
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && crispy.checked == true) {
-            total = 600;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && stuffed.checked == true) {
-            total = 800;
-        }
-        if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && glutten.checked == true) {
-            total = 1000;
+        $("#row4").each(function () {
+
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && crispy.checked == true){
+                total = 1000;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && stuffed.checked == true) {
+                total = 1200;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && large.checked == true && glutten.checked == true) {
+                total = 1400;
+            }
+            // Pizza 1, 2 and 3 medium
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && crispy.checked == true) {
+                total = 800;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && stuffed.checked == true) {
+                total = 1000;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && medium.checked == true && glutten.checked == true) {
+                total = 1200;
+            }
+            // Pizza 1, 2 and 3 small
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && crispy.checked == true) {
+                total = 600;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && stuffed.checked == true) {
+                total = 800;
+            }
+            if (pizza1.checked == true || pizza2.checked == true || pizza3.checked == true && small.checked == true && glutten.checked == true) {
+                total = 1000;
+            }
+
+            //DELUXE PIZZAS
+            // Pizza 4, 5 and 6 large
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && crispy.checked == true) {
+                total = 1400;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && stuffed.checked == true) {
+                total = 1600;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && glutten.checked == true) {
+                total = 1800;
+            }
+            // Pizza 4, 5 and 6 medium
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && crispy.checked == true) {
+                total = 1200;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && stuffed.checked == true) {
+                total = 1400;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && glutten.checked == true) {
+                total = 1600;
+            }
+            // Pizza 4, 5 and 6 small
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && crispy.checked == true) {
+                total = 1000;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && stuffed.checked == true) {
+                total = 1200;
+            }
+            if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && glutten.checked == true) {
+                total = 1400;
+            }
+
+            //Toppings for large when you have both
+            if (meat.checked == true && cheese.checked == true && large.checked == true){
+                total = total + 700;
+            }else if (meat.checked == true && cheese.checked == true && medium.checked == true) {
+                total = total + 550;
+            }else if (meat.checked == true && cheese.checked == true && small.checked == true) {
+                total = total + 400;
+            }
+
+            //Toppings for when only meat is checked
+            if (meat.checked == true && large.checked == true) {
+                total = total + 400;
+            } else if (meat.checked == true && medium.checked == true) {
+                total = total + 350;
+            } else if (meat.checked == true && small.checked == true) {
+                total = total + 200;
+            }
+
+            //Toppings for when only cheese is checked
+            if (cheese.checked == true && large.checked == true) {
+                total = total + 400;
+            } else if (cheese.checked == true && medium.checked == true) {
+                total = total + 350;
+            } else if (cheese.checked == true && small.checked == true) {
+                total = total + 200;
+            }
+
+            var pizzaSelected = $(this).find("input[name='pizza']:checked").val();
+            var sizeSelected = $(this).find("input[name='size']:checked").val();
+            var crustSelected = $(this).find("input[name='crust']:checked").val();
+            var toppingsBought = [];
+            $("input:checkbox[name=toppings]:checked").each(function () {
+                toppingsBought.push($(this).val());
+            });
+            newOrder = new Order(pizzaSelected, sizeSelected, crustSelected, total);
+            newOrder.toppingsAdded.push(toppingsBought);
+            newContact.orders.push(newOrder);
+
+        });
+        
+        //This creates an order Summary
+        $(".first-name").text(newContact.firstName);
+        $(".last-name").text(newContact.lastName);
+        $(".delivery-details").text(newAddress.fullAddress());
+        
+        if (document.getElementById("completeTotal").innerHTML == '') {
+            var standingTotal = 0;
+        } else {
+            var standingTotal = document.getElementById("completeTotal").innerHTML;
         }
 
-        //DELUXE PIZZAS
-        // Pizza 4, 5 and 6 large
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && crispy.checked == true) {
-            total = 1400;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && stuffed.checked == true) {
-            total = 1600;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && large.checked == true && glutten.checked == true) {
-            total = 1800;
-        }
-        // Pizza 4, 5 and 6 medium
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && crispy.checked == true) {
-            total = 1200;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && stuffed.checked == true) {
-            total = 1400;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && medium.checked == true && glutten.checked == true) {
-            total = 1600;
-        }
-        // Pizza 4, 5 and 6 small
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && crispy.checked == true) {
-            total = 1000;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && stuffed.checked == true) {
-            total = 1200;
-        }
-        if (pizza4.checked == true || pizza5.checked == true || pizza6.checked == true && small.checked == true && glutten.checked == true) {
-            total = 1400;
-        }
+        newContact.orders.forEach(function (order) {
+            $("ul#pizzaBought").append("<ol>" + newOrder.fullOrder() + "</ol>");
+            var kavtotal = (parseInt(standingTotal) + parseInt(newOrder.totalAmount)).toString()
+            $("#completeTotal").text((parseInt(standingTotal) + parseInt(newOrder.totalAmount)).toString());
+        });
+        
+    });
 
-        //Toppings for large when you have both
-        if (meat.checked == true && cheese.checked == true && large.checked == true){
-            total = total + 700;
-        }else if (meat.checked == true && cheese.checked == true && medium.checked == true) {
-            total = total + 550;
-        }else if (meat.checked == true && cheese.checked == true && small.checked == true) {
-            total = total + 400;
-        }
+});
 
-        //Toppings for when only meat is checked
-        if (meat.checked == true && large.checked == true) {
-            total = total + 400;
-        } else if (meat.checked == true && medium.checked == true) {
-            total = total + 350;
-        } else if (meat.checked == true && small.checked == true) {
-            total = total + 200;
-        }
-
-        //Toppings for when only cheese is checked
-        if (cheese.checked == true && large.checked == true) {
-            total = total + 400;
-        } else if (cheese.checked == true && medium.checked == true) {
-            total = total + 350;
-        } else if (cheese.checked == true && small.checked == true) {
-            total = total + 200;
-        }
-
-        alert("Your order is: " + newOrder.fullOrder() + " and your total is: " + total);
-
-    })
-})
-
-$(document).ready(function(){
-    $("#another_order").click(function(){
-        $("#row4").append(
-            "<span class='new_order'>" +
-            '<h5>Another One</h5>' +
-            '<div id="order1">' +
-                '<div class="col" id="col3">' +
-                    '<h5>Classic</h5>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza1" value="Beef Peperoni">' +
-                        '<label class="form-check-label" for="pizza">Pizza 1</label>' +
-                    '</div>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza2" value="Chicken and Mushroom">' +
-                        '<label class="form-check-label" for="pizza">Pizza 2</label>' + 
-                    '</div>' + 
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza3" value="Vegeterian Blast">' +
-                        '<label class="form-check-label" for="pizza">Pizza 3</label>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="col" id="col3">' +
-                    '<h5>Deluxe</h5>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza4" value="Sweet and Sour Chicken">' +
-                        '<label class="form-check-label" for="pizza">Pizza 1</label>' +
-                    '</div>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza5" value="Cheese Pizza">' +
-                        '<label class="form-check-label" for="pizza">Pizza 2</label>' +
-                    '</div>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="pizza" id="pizza6" value="Seafood Pizza">' +
-                        '<label class="form-check-label" for="pizza">Pizza 3</label>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="col" id="col3">' +
-                    '<h5>Size</h5>' + 
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="size" id="large" value="Large">' +
-                        '<label class="form-check-label" for="size">Large</label>' +
-                    '</div>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="size" id="medium" value="Medium">' +
-                        '<label class="form-check-label" for="size">Medium</label>' +
-                    '</div>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="size" id="small" value="Small">' +
-                        '<label class="form-check-label" for="size">Small</label>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="col" id="col3">' +
-                    '<h5>Crust</h5>' +
-                    '<div class="form-check">' +
-                        '<input class="form-check-input" type="radio" name="crust" id="crispy" value="Crispy">' +
-                        '<label class="form-check-label" for="crust">Crispy</label>' +
-                    '</div>' +
-                '<div class="form-check">' +
-                    '<input class="form-check-input" type="radio" name="crust" id="stuffed" value="Stuffed">' +
-                    '<label class="form-check-label" for="crust">Stuffed</label>' +
-                '</div>' +
-                '<div class="form-check">' +
-                    '<input class="form-check-input" type="radio" name="crust" id="glutten" value="Glutten Free">' +
-                    '<label class="form-check-label" for="crust">Glutten Free</label>' +
-                '</div>' +
-            '</div>' +
-            '<div class="col" id="col3">' + 
-                '<h5>Toppings</h5>' +
-                '<div class="form-check">' +
-                    '<input class="form-check-input" type="checkbox" id="meat" name="toppingsMeat" value="Meat">' +
-                    '<label class="form-check-label" for="meat">Meat</label>' +
-                '</div>' +
-                '<div class="form-check">' +
-                    '<input class="form-check-input" type="checkbox" id="cheese" name="toppingsCheese" value="Cheese">' +
-                    '<label class="form-check-label" for="cheese">Cheese</label>' +
-                '</div>' +
-            '</div>' +
-        '</div>'
-        )
-    })
-})

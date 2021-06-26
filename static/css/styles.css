@@ -2,14 +2,25 @@ body, html{
     width: 100%;
     height: 100%;
 }
+nav{
+    background-color:burlywood;
+    opacity: 0.5;
+    color:brown;
+}
+.nav-link{
+    color: brown;
+}
 #homepage{
     width: 100%;
     height: 100%;
     background-image: url(../images/bg1.jpg);
-    color: beige;
+    color:coral;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
+    text-align: center;
 }
 .hpcontent{
     width: 60%;
@@ -25,10 +36,26 @@ body, html{
     align-items: center;
 }
 #row1{
-    background-color: aqua;
     width: 60%;
+    height: 60%;
     display: flex;
     justify-content: space-between;
+    
+}
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    height: 30rem;
+    text-overflow: ellipsis;
+    width: max-content;
+}
+.card img{
+    width: 80%;
+}
+.card-body{
+    overflow: hidden;
 }
 #col1{
     padding: 10px 0px;
@@ -36,10 +63,14 @@ body, html{
     align-items: center;
     justify-content: center;
 }
+.orderwus{
+    text-align: center;
+}
 #order{
     background-color: blue;
     display: flex;
     flex-direction: column;
+    width: 70%;
     /* align-items: center; */
     /* justify-content: center; */
 }
@@ -63,4 +94,13 @@ body, html{
 }
 #col3{
     background-color: brown;
+    height:11rem;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+}
+#your_order{
+    background-color: blanchedalmond;
+    border: 1px solid burlywood;
+    border-radius: 5px;
+    margin-top: 20px;
 }

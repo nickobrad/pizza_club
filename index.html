@@ -16,28 +16,25 @@
     
     <!-- This is my Nav Bar -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pizza Club</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link " aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Classic Pizza</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="deluxePizza">
                         <a class="nav-link active" href="#">Deluxe Pizza</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Extras</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Checkout</a>
+                    <li class="nav-item" id="orderWithUs">
+                        <a class="nav-link active" href="#">Order With Us</a>
                     </li>
                 </ul>
             </div>
@@ -45,8 +42,8 @@
     </nav>
 
     <!-- Home page content -->
-
     <div class="container-fluid" id="homepage">
+
         <div class="hpcontent">
             <div class="hpimage">
                 <!-- <img src="./static/images/p1.jpg" alt="" class="img-fluid" width="300" > -->
@@ -65,20 +62,21 @@
         <h1>CLASSICAL PIZZA</h1>
         <div class="row align-items-center" id="row1">
             <div class="col" id="col1">
-                <div class="card" style="width: 15rem;">
+                <div class="card" style="width: 15rem">
                     <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>BEEF PEPERONI</h5>
                         <p class="card-text">
                             Some quick example text to build on the card title and make up the bulk of the card's
                             content.
+                            
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col" id="col1">
-                <div class="card" style="width: 15rem;">
-                    <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
+                <div class="card" style="width: 15rem">
+                    <img src="./static/images/pizza1.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>CHICKEN & MUSHROOM</h5>
                         <p class="card-text">
@@ -90,7 +88,7 @@
             </div>
             <div class="col" id="col1">
                 <div class="card" style="width: 15rem;">
-                    <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
+                    <img src="./static/images/pizza3.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>VEGETERIAN BLAST</h5>
                         <p class="card-text">
@@ -104,11 +102,12 @@
 
         <br>
 
+        <!-- Deluxe Pizza Section -->
         <h1>DELUXE PIZZA</h1>
         <div class="row align-items-center" id="row1">
             <div class="col" id="col1">
                 <div class="card" style="width: 15rem;">
-                    <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
+                    <img src="./static/images/pizza11.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>SWEET & SOUR CHICKEN</h5>
                         <p class="card-text">
@@ -119,9 +118,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col" id="col1">
+            <div class="col " id="col1">
                 <div class="card" style="width: 15rem;">
-                    <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
+                    <img src="./static/images/pizza22.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>CHEESE PIZZA</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -133,7 +132,7 @@
             </div>
             <div class="col" id="col1">
                 <div class="card" style="width: 15rem;">
-                    <img src="./static/images/p1.jpg" class="card-img-top-fluid" alt="...">
+                    <img src="./static/images/pizza33.jpg" class="card-img-top-fluid" alt="...">
                     <div class="card-body">
                         <h5>SEAFOOD PIZZA</h5>
                         <p class="card-text">
@@ -146,9 +145,9 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container-fluid" id="order">
-        <h3>ORDER WITH US</h3>
+        <h3 class="orderwus">ORDER WITH US</h3>
         <form id="collect">
 
             <div class="row align-items-center" id="row2">
@@ -182,40 +181,40 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="county_name" placeholder="County">
-                    <label for="last_name">County</label>
+                    <input type="text" class="form-control" id="county_name" placeholder=" County">
+                    <label for="county_name">County</label>
                 </div>
             </div>
             <h4 class="pizza_selection">Please select your Pizza:</h4>
-            <div class="row row-eq-height align-items-center" id="row4">
+            <div class="row align-items-center" id="row4">
                 <div class="col" id="col3">
                     <h5>Classic</h5>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza1" value="Beef Peperoni">
-                        <label class="form-check-label" for="pizza">Pizza 1</label>
+                        <label class="form-check-label" for="pizza">Beef Peperoni</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza2" value="Chicken and Mushroom">
-                        <label class="form-check-label" for="pizza">Pizza 2</label>
+                        <label class="form-check-label" for="pizza">Chicken & Mushroom</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza3" value="Vegeterian Blast">
-                        <label class="form-check-label" for="pizza">Pizza 3</label>
+                        <label class="form-check-label" for="pizza">Vegeterian Blast</label>
                     </div>
                 </div>
                 <div class="col" id="col3">
                     <h5>Deluxe</h5>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza4" value="Sweet and Sour Chicken">
-                        <label class="form-check-label" for="pizza">Pizza 1</label>
+                        <label class="form-check-label" for="pizza">Sweet & Sour Chicken</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza5" value="Cheese Pizza">
-                        <label class="form-check-label" for="pizza">Pizza 2</label>
+                        <label class="form-check-label" for="pizza">Cheese Pizza</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="pizza" id="pizza6" value="Seafood Pizza">
-                        <label class="form-check-label" for="pizza">Pizza 3</label>
+                        <label class="form-check-label" for="pizza">Sea food Pizza</label>
                     </div>
                 </div>
                 <div class="col" id="col3">
@@ -259,16 +258,35 @@
                         <label class="form-check-label" for="cheese">Cheese</label>
                     </div>
                 </div>
-                <div class="col" id="col3">
-                    <span type="button" class="btn btn-outline-secondary" id="another_order">Another Order</span>
-                </div>
-
+    
             </div>
             
             <span class="new_order"></span>
+            
+            <span type="button" class="btn btn-outline-secondary" id="another_order">Another Order</span>
             <button type="submit" class="btn btn-outline-success" id="Checkout">Success</button>
 
         </form>
+
+        <div class="container-fluid" id="your_order">
+            <div class="your_order_content">
+                <p>Thank you for ordering with us. Your order is as follows: </p>
+                <div class="row align-items-center" id="row5">
+                    <p>
+                        First Name: <span class="first-name"></span>
+                    </p>
+                    <p>
+                        Last Name: <span class="last-name"></span>
+                    </p>
+                    <p>
+                        Delivery Details: <span class="delivery-details"></span>
+                    </p>
+                    <p>Orders:</p>
+                    <ul id="pizzaBought"> </ul>
+                    <p>Total: <span id="completeTotal"></span></p>
+                </div>
+            </div>
+        </div>
 
     </div>
 
