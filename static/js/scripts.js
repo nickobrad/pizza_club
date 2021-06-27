@@ -78,6 +78,8 @@ $(document).ready(function(){
         var meat = document.getElementById("meat");
         var cheese = document.getElementById("cheese");
 
+        var delivery = document.getElementById("del");
+        var pickUp = document.getElementById("pick");
         var total = 0;
 
         //CLASSIC PIZZAS
@@ -173,6 +175,13 @@ $(document).ready(function(){
                 total = total + 200;
             }
 
+            if (delivery.checked == true) {
+                alert("Your order will be delivered to " + newAddress.fullAddress() + " and you have a delivery charge of KES 300.");
+                total = total + 300;
+            } else if (pickUp.checked == true) {
+                alert("Your order will be ready for pick up in 30 minutes. Have a good day!");
+            }
+
             var pizzaSelected = $(this).find("input[name='pizza']:checked").val();
             var sizeSelected = $(this).find("input[name='size']:checked").val();
             var crustSelected = $(this).find("input[name='crust']:checked").val();
@@ -183,6 +192,8 @@ $(document).ready(function(){
             newOrder = new Order(pizzaSelected, sizeSelected, crustSelected, total);
             newOrder.toppingsAdded.push(toppingsBought);
             newContact.orders.push(newOrder);
+
+            
 
         });
         
