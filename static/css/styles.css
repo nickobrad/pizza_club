@@ -107,7 +107,6 @@ nav{
     text-align: center;
 }
 #row4{
-    background-color: blueviolet;
     display: flex;
     justify-content:space-around;
 }
