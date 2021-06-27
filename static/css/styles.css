@@ -88,19 +88,15 @@ nav{
     text-align: center;
 }
 #order{
-    background-color: blue;
     display: flex;
     flex-direction: column;
     width: 70%;
     /* align-items: center; */
     /* justify-content: center; */
 }
-#order1{
-    background-color: aqua;
-}
+
 #row2{
     text-align: center;
-    background-color: aqua;
     width:100%;
 }
 #row3{
@@ -119,4 +115,9 @@ nav{
     border: 1px solid burlywood;
     border-radius: 5px;
     margin-top: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
