@@ -216,5 +216,9 @@ $(document).ready(function(){
         
     });
 
+    $("#another_order").click(function () {
+        resetFields();
+    });
+
 });
 
